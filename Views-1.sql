@@ -1,24 +1,26 @@
-CREATE DATABASE VIEWS;
+
 use VIEWS;
 
-CREATE TABLE estoque (
+
+CREATE TABLE funcionarios (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  produto VARCHAR(255) NOT NULL,
-  quantidade INT NOT NULL
+  nome VARCHAR(255) NOT NULL,
+  cargo VARCHAR(255) NOT NULL,
+  departamento VARCHAR(255) NOT NULL
 );
 
 
-INSERT INTO estoque (produto, quantidade) VALUES
-('pasta de dente', 3),
-('fio dental', 8),
-('escova de dente', 2),
-('exaguante bocal', 7);
+INSERT INTO funcionarios (nome, cargo, departamento) VALUES
+('João', 'Gerente', 'Administrativo'),
+('Maria', 'Analista', 'Administrativo'),
+('José', 'Técnico', 'Produção'),
+('Pedro', 'Analista', 'Administrativo');
 
 
-CREATE VIEW vw_estoque_insuficiente AS
-SELECT produto, quantidade
-FROM estoque
-WHERE quantidade < 5;
+CREATE VIEW vw_funcionarios_departamento AS
+SELECT nome, cargo
+FROM funcionarios
+WHERE departamento = 'Administrativo';
 
+SELECT * FROM vw_funcionarios_departamento;
 
-SELECT * FROM vw_estoque_insuficiente;
